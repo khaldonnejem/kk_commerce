@@ -109,7 +109,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
 
-                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
                                     <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}"
                                         href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
 
