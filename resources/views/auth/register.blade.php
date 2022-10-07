@@ -83,7 +83,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <style>
@@ -638,23 +638,26 @@
                         Welcome, Please sign up your account.
                     </p>
                 </header>
-                        <form class="sign-up__form form" method="POST" action="{{ route('register') }}">
-                            @csrf
+                <form class="sign-up__form form" method="POST" action="{{ route('register') }}">
+                    @csrf
+
                     <div class="form__row">
                         <div class="input">
 
 
                             <div class="input__container">
-                                <input class="input__field" id="username" placeholder="Name" required=""
+                                <input class="input__field" id="name" placeholder="Name" required=""
                                     type="text" name="name" value="{{ old('name') }}" />
                                 <label class="input__label" for="name">
                                     Name
                                 </label>
+
                                 @error('name')
-                                <small style="color: red" role="alert">
-                                    {{ $message }}
-                                </small>
-                            @enderror
+                                    <small style="color: red
+                            " role="alert">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -666,11 +669,13 @@
                                 <label class="input__label" for="email">
                                     Email
                                 </label>
+
                                 @error('email')
-                                <small style="color: red" role="alert">
-                                    {{ $message }}
-                                </small>
-                            @enderror
+                                    <small style="color: red
+                            " role="alert">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -683,10 +688,11 @@
                                     Password
                                 </label>
                                 @error('password')
-                                <small style="color: red" role="alert">
-                                    {{ $message }}
-                                </small>
-                            @enderror
+                                    <small style="color: red
+                                " role="alert">
+                                        {{ $message }}
+                                    </small>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -701,7 +707,17 @@
                             </div>
                         </div>
                     </div>
-
+                    {{-- <div class="form__row">
+                        <div class="input-checkbox">
+                            <div class="input-checkbox__container">
+                                <input id="agree" required="" tabindex="0" type="checkbox" />
+                                <span class="input-checkbox__square">
+                                </span><label class="input-checkbox__label" for="agree">
+                                    I agree with terms and conditions
+                                </label>
+                            </div>
+                        </div>
+                    </div> --}}
                     <div class="form__row">
                         <div class="component component--primary form__button">
                             <button class="btn btn--regular" id="sign-up-button" tabindex="0">
@@ -713,6 +729,7 @@
                         Already have an account? &nbsp;
                         <a class="link" href="{{ route('login') }}">Sign in.
                         </a>
+
                     </div>
                 </form>
             </div>

@@ -39,6 +39,7 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="{{ asset('siteassets/css/style.css') }}">
 
+    @yield('styles')
 </head>
 
 <body id="body">
@@ -84,44 +85,42 @@
 						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
 								class="tf-ion-android-cart"></i>Cart</a>
 						<div class="dropdown-menu cart-dropdown">
-							<!-- Cart Item -->
+                            @php
+                                $total = 0;
+                            @endphp
+
+						{{-- @if (Auth::check()) --}}
+						@auth
+						@foreach (auth()->user()->carts as $cart)
+								<!-- Cart Item -->
 							<div class="media">
-								<a class="pull-left" href="#!">
-									<img class="media-object" src="{{ asset('siteassets/images/shop/cart/cart-1.jpg') }}" alt="image" />
+								<a class="pull-left" href="{{ route('site.product', $cart->product->slug) }}">
+									<img class="media-object" src="{{ asset('uploads/products/' . $cart->product->image ) }}" alt="image" />
 								</a>
 								<div class="media-body">
-									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
+									<h4 class="media-heading"><a href="{{ route('site.product', $cart->product->slug) }}">{{ $cart->product->trans_name  }}</a></h4>
 									<div class="cart-price">
-										<span>1 x</span>
-										<span>1250.00</span>
+										<span>{{ $cart->quantity }} x</span>
+										<span>{{ $cart->price }}</span>
 									</div>
-									<h5><strong>$1200</strong></h5>
+									<h5><strong>${{ $cart->quantity * $cart->price  }}</strong></h5>
 								</div>
-								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-							</div><!-- / Cart Item -->
-							<!-- Cart Item -->
-							<div class="media">
-								<a class="pull-left" href="#!">
-									<img class="media-object" src="{{ asset('siteassets/images/shop/cart/cart-2.jpg') }}" alt="image" />
-								</a>
-								<div class="media-body">
-									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>
-									<div class="cart-price">
-										<span>1 x</span>
-										<span>1250.00</span>
-									</div>
-									<h5><strong>$1200</strong></h5>
-								</div>
-								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>
-							</div><!-- / Cart Item -->
+									<a onclick="return confirm('Are You Sure?')" href="{{ route('site.remove_cart',$cart->id) }}" class="remove"><i class="tf-ion-close"></i></a>
+									</div><!-- / Cart Item -->
+								@php
+								$total +=  $cart->quantity * $cart->price ;
+								@endphp
+						@endforeach
+						@endauth
+
 
 							<div class="cart-summary">
 								<span>Total</span>
-								<span class="total-price">$1799.00</span>
+								<span class="total-price">${{ number_format($total,2)  }}</span>
 							</div>
 							<ul class="text-center cart-buttons">
-								<li><a href="cart.html" class="btn btn-small">View Cart</a></li>
-								<li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>
+								<li><a href="{{ route('site.cart') }}" class="btn btn-small">View Cart</a></li>
+								<li><a href="{{ route('site.checkout') }}" class="btn btn-small btn-solid-border">Checkout</a></li>
 							</ul>
 						</div>
 
@@ -175,17 +174,18 @@
 				<ul class="nav navbar-nav">
 
 					<!-- Home -->
-					<li class="dropdown ">
+					<li class="dropdown {{ request()->routeIs('site.index') ? 'active' : '' }} ">
+
 						<a href="{{ route('site.index') }}">Home</a>
 					</li><!-- / Home -->
 
 					<!-- About -->
-					<li class="dropdown ">
+					<li class="dropdown {{ request()->routeIs('site.about') ? 'active' : '' }}">
 						<a href="{{ route('site.about') }}">About</a>
 					</li><!-- / About -->
 
 					<!-- Shop -->
-					<li class="dropdown ">
+					<li class="dropdown {{ request()->routeIs('site.shop') ? 'active' : '' }}">
 						<a href="{{ route('site.shop') }}">Shop</a>
 					</li><!-- / Shop -->
 
@@ -204,7 +204,7 @@
 					</li><!-- / Categories -->
 
 					<!-- Contact -->
-					<li class="dropdown ">
+					<li class="dropdown {{ request()->routeIs('site.contact') ? 'active' : '' }}">
 						<a href="{{ route('site.contact') }}">Contact</a>
 					</li><!-- / Contact -->
 
@@ -298,7 +298,7 @@
     <script src="{{ asset('siteassets/js/script.js') }}"></script>
 
 
-
+    @yield('scripts')
   </body>
 
 <!-- Mirrored from demo.themefisher.com/aviato/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Aug 2022 11:27:48 GMT -->

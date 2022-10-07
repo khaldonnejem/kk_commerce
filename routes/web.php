@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\SiteController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -56,9 +57,24 @@ Route::get('/shop',[SiteController::class, 'shop'])->name('site.shop');
 Route::get('/contact',[SiteController::class, 'contact'])->name('site.contact');
 
 Route::get('/category/{id}',[SiteController::class, 'category'])->name('site.category');
-Route::get('/product/{id}',[SiteController::class, 'product'])->name('site.product');
 Route::get('/search',[SiteController::class, 'search'])->name('site.search');
+Route::get('/product/{slug}',[SiteController::class, 'product'])->name('site.product');
+Route::post('/product/{slug}/review',[SiteController::class, 'product_review'])->name('site.product_review');
+Route::post('/add-to-cart',[CartController::class, 'add_to_cart'])->name('site.add_to_cart');
+
+Route::get('/cart',[CartController::class, 'cart'])->name('site.cart')->middleware('auth');
+Route::post('/update-cart',[CartController::class, 'update_cart'])->name('site.update_cart')->middleware('auth');
+Route::get('/cart/{id}',[CartController::class, 'remove_cart'])->name('site.remove_cart')->middleware('auth');
+
+Route::get('/checkout',[CartController::class, 'checkout'])->name('site.checkout')->middleware('auth');
+Route::get('/payment',[CartController::class, 'payment'])->name('site.payment')->middleware('auth');
+Route::get('/payment/success',[CartController::class, 'success'])->name('site.success')->middleware('auth');
+Route::get('/payment/fail',[CartController::class, 'fail'])->name('site.fail')->middleware('auth');
 
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
