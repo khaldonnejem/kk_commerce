@@ -1,13 +1,18 @@
 <?php
 
+use App\Mail\InvoiceMail;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SiteController;
+use App\Notifications\newOrderNotification;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -76,5 +81,21 @@ Route::get('/payment/fail',[CartController::class, 'fail'])->name('site.fail')->
 
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Dont do this just for test only
+// Route::get('send-notification', function(){
+//     // $user = Auth::user();
+
+//     // Mail::to($user->email)->send(new InvoiceMail());
+
+//     // $user->notify(new newOrderNotification());
+// });
+
+// Route::get('invoice', function(){
+
+//     // return view('pdf.invoice');
+//     $order = Order::find(1);
+//     $pdf = Pdf::loadView('pdf.invoice',['order' => $order]);
+//     $pdf->save('invoices/latest.pdf');
+// });

@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Cart;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Product;
-use Exception;
+use App\Mail\InvoiceMail;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -176,6 +179,10 @@ class CartController extends Controller
             throw new Exception($e->getMessage());
         }
 
+        // Send Invocie
+        $invname = rand(). rand(). '.pdf';
+         Pdf::loadView('pdf.invoice',['order' => $order])->save('invoices/'. $invname);
+        Mail::to(Auth()->user()->email)->send(new InvoiceMail(Auth::user()->name, $invname));
 
         //redirect to success page;
         return redirect()->route('site.success');
