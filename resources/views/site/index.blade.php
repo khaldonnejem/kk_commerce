@@ -4,6 +4,9 @@
 
 
 @section('content')
+
+    {{-- {{ $name }} --}}
+
     <div class="hero-slider">
 
         @foreach ($products_slider as $item)

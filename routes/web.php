@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\APIController;
 use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -83,19 +84,7 @@ Route::get('/payment/fail',[CartController::class, 'fail'])->name('site.fail')->
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Dont do this just for test only
-// Route::get('send-notification', function(){
-//     // $user = Auth::user();
+Route::get('posts-api', [APIController::class, 'posts']);
 
-//     // Mail::to($user->email)->send(new InvoiceMail());
 
-//     // $user->notify(new newOrderNotification());
-// });
-
-// Route::get('invoice', function(){
-
-//     // return view('pdf.invoice');
-//     $order = Order::find(1);
-//     $pdf = Pdf::loadView('pdf.invoice',['order' => $order]);
-//     $pdf->save('invoices/latest.pdf');
-// });
+    include 'test.php';

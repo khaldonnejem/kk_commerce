@@ -54,6 +54,11 @@
                         <i class="tf-ion-ios-telephone"></i>
 					    <span>0129- 12323-123123</span>
                     </a>
+
+                    {{-- {{ $name }} --}}
+                    <br>
+                    <img width="25" src="http://openweathermap.org/img/wn/{{ $weather['weather'][0]['icon'] }}@2x.png" alt=""> : {{ $weather['main']['temp'] }}°C
+
                     {{-- <a href="mailto:khaldon.r.n.n@gmail.com">
                         khaldon.r.n.n@gmail.com
                     </a> --}}
@@ -221,6 +226,8 @@
 	</nav>
 </section>
 
+    {{-- {{ $name }} --}}
+
 @yield('content')
 
 <footer class="footer section text-center">
@@ -229,22 +236,22 @@
 			<div class="col-md-12">
 				<ul class="social-media">
 					<li>
-						<a href="https://www.facebook.com/themefisher">
+						<a href="https://www.facebook.com/profile.php?id=100012377685859">
 							<i class="tf-ion-social-facebook"></i>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.instagram.com/themefisher">
+						<a href="https://www.instagram.com/khaldon.nejem/">
 							<i class="tf-ion-social-instagram"></i>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.twitter.com/themefisher">
+						<a href="https://twitter.com/Khanaa35218530">
 							<i class="tf-ion-social-twitter"></i>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.pinterest.com/themefisher/">
+						<a href="https://www.pinterest.com/khaldonnejem/">
 							<i class="tf-ion-social-pinterest"></i>
 						</a>
 					</li>
@@ -263,7 +270,7 @@
 						<a href="contact.html">PRIVACY POLICY</a>
 					</li>
 				</ul>
-				<p class="copyright-text">Copyright &copy; {{ date('Y') }}, Designed &amp; Developed by: <a href="https://themefisher.com/">{!! 'Khaldon R. Nejem' !!}</a></p>
+				<p class="copyright-text">Copyright &copy; {{ date('Y') }}, Designed &amp; Developed by: <a href="https://github.com/khaldonnejem">{!! 'Khaldon R. Nejem' !!}</a></p>
 			</div>
 		</div>
 	</div>

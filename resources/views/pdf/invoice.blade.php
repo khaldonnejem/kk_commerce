@@ -41,12 +41,13 @@
                 {{-- {!! QrCode::size(150)->generate('Khaldon Nejem Buy Mercides Car From Us'); !!} --}}
                 {{-- {!! QrCode::format('png')->size(150)->generate('Khaldon Nejem Buy Mercides Car From Us'); !!} --}}
                 <img
-                    src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate('Khaldon Nejem Buy Mercides Car From Us')) }}" />
+                    src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate("Thanks Maysam for your purchase an Laptop From Us")) }}" />
+                    {{-- src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate('Thanks ('. $this->order->user->name.') For you purchase and ('. $this->order->id .')')) }}" /> --}}
 
                 <address>
                     <strong>Khaldon Web services Kha. Ltd.</strong><br>
 
-                    35, Khaldon Rafat<br>
+                    35, {{ $order->user->name }}<br>
                     Palestine, Gaza-122001 (Gaza)
                 </address>
             </div>
@@ -116,10 +117,10 @@
         </div>
         <div class="row">
             <div class="span3">
-                <strong>Phone:</strong>+91-124-111111
+                <strong>Phone:</strong>+970597068306
             </div>
             <div class="span3">
-                <strong>Email:</strong> <a href="web@webivorous.com">web@webivorous.com</a>
+                <strong>Email:</strong> <a href="khaldon.r.n.n@gmail.com">khaldon.r.n.n@gmail.com</a>
             </div>
             <div class="span3">
                 <strong>Website:</strong> <a href="http://webivorous.com">http://webivorous.com</a>
