@@ -45,13 +45,23 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 
+
+
     {{-- ways ajax(
         1- java script.
         2- axios.  //resources>>js>>bootstrap.js
         3- fetch.
-        4- jequery.
+        4- jquery.
     ) --}}
     <script>
+
+        // XMLHttpRequest
+        //Fethch API
+            // fetch(file)
+            // .then(x => x.text())
+            // .then(y => myDisplay(y));
+        //Jquery Ajax
+        //Axios
 
         //1- using ajax by Java Script js..
         // $.ajax({

@@ -87,4 +87,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('posts-api', [APIController::class, 'posts']);
 
 
+
+// Route::get('/خلدون',[SiteController::class,'khaldon']);
+
+
     include 'test.php';
+
+

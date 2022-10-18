@@ -41,7 +41,8 @@
                 {{-- {!! QrCode::size(150)->generate('Khaldon Nejem Buy Mercides Car From Us'); !!} --}}
                 {{-- {!! QrCode::format('png')->size(150)->generate('Khaldon Nejem Buy Mercides Car From Us'); !!} --}}
                 <img
-                    src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate("Thanks Maysam for your purchase an Laptop From Us")) }}" />
+                    {{-- src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate("Thanks Maysam for your purchase an Laptop From Us")) }}" /> --}}
+                    src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate("Thanks Khaldon for your purchase an Laptop From Us")) }}" />
                     {{-- src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate('Thanks ('. $this->order->user->name.') For you purchase and ('. $this->order->id .')')) }}" /> --}}
 
                 <address>

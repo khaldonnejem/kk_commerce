@@ -88,4 +88,10 @@ class SiteController extends Controller
 
     return redirect()->back();
    }
+
+
+//    public function khaldon()
+//    {
+//     return 'ddd';
+//    }
 }
