@@ -40,6 +40,6 @@
         </td>
     </tr>
     @endforeach
-    <h3>HIIIIIIIIIIIIIII</h3>
+    {{-- <h3>HIIIIIIIIIIIIIII</h3> --}}
 </table>
 @stop

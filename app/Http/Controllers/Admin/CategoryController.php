@@ -91,6 +91,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
+        return $id;
     }
 
     /**
@@ -101,6 +102,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+          // $category = Category::findOrFail($id);
+
+        // if(!$category) {
+        //     abort(404);
+        // }
+
+        // dd($category);
         $categories = category::all();
         $category = category::findOrFail($id);
         return view('admin.categories.edit',compact('categories','category'));
@@ -177,4 +185,27 @@ class CategoryController extends Controller
 
         // return redirect()->route('admin.categories.index')->with('fail','Category deleted successfully')->with('type', 'danger');
     }
+
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view('admin.categories.trash', compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        Category::onlyTrashed()->find($id)->restore();
+
+        return redirect()->route('admin.categories.trash')->with('msg', 'Category restored successfully')->with('type', 'warning');
+    }
+
+    public function forcedelete($id)
+    {
+        $category = Category::onlyTrashed()->find($id);
+        File::delete(public_path('uploads/categories/'. $category->image));
+        $category->forcedelete();
+
+        return redirect()->route('admin.categories.trash')->with('msg', 'Category deleted permanintly successfully')->with('type', 'danger');
+    }
+
 }

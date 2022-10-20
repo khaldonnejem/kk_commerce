@@ -7,12 +7,11 @@ use App\Traits\Trans;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class category extends Model
 {
-    use HasFactory , Trans;
+    use HasFactory , Trans, SoftDeletes;
 
     // protected $guarded = [];
     protected $fillable = ['name', 'image', 'parent_id'];

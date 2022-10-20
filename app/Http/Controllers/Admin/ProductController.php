@@ -239,4 +239,38 @@ class ProductController extends Controller
         Image::destroy($id);
         return redirect()->back();
     }
+
+    public function trash()
+    {
+        $products = Product::onlyTrashed()->get();
+        return view('admin.products.trash', compact('products'));
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        Product::onlyTrashed()->find($id)->restore();
+
+        return redirect()->route('admin.products.trash')->with('msg', 'Product restored successfully')->with('type', 'warning');
+    }
+
+    /**
+     * forcedelete the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function forcedelete($id)
+    {
+        $product = Product::onlyTrashed()->find($id);
+        File::delete(public_path('uploads/categories/'. $product->image));
+        $product->forcedelete();
+
+        return redirect()->route('admin.products.trash')->with('msg', 'Product deleted permanintly successfully')->with('type', 'danger');
+    }
 }
