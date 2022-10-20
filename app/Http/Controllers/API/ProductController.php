@@ -17,7 +17,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        $products = Product::all();
+
+        if($products->count() > 0) {
+            return response()->json([
+                'message' => 'All Products',
+                'status' => 'Success',
+                'data' => $products
+            ], 201);
+        }else {
+            return response()->json([
+                'message' => 'No Data Found',
+                'status' => 'Success',
+                'data' => []
+            ], 200);
+        }
     }
 
     /**
@@ -105,7 +119,21 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::find($id);
+        // return Product::find($id);
+        $product = Product::find($id);
+        if($product) {
+            return response()->json([
+                'message' => 'Found Data',
+                'status' => 'Success',
+                'data' => $product
+            ], 200);
+        }else {
+            return response()->json([
+                'message' => 'No Found Data',
+                'status' => 'Success',
+                'data' => []
+            ], 404);
+        }
     }
 
     /**
@@ -230,6 +258,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // return 'yes';
+        return Product::destroy($id);
     }
 }
