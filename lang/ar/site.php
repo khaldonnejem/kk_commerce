@@ -12,4 +12,12 @@ return [
     'add new' => 'إضافة جديد',
     'all products' => 'جميع المنتجات',
 
+    'trash' =>  'سلة المهملات',
+    'promocodes' => 'كود خصم',
+    'all promocodes' => 'جميع أكواد الخصم',
+    'reviews' => 'المراجعات',
+    'testimonials' => 'التوصيات-الشهادات',
+    'all testimonials' => 'جميع التوصيات',
+    'roles' => 'الصلاحيات',
+
 ];

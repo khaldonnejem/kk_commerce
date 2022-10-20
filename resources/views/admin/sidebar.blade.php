@@ -107,12 +107,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCode"
             aria-expanded="true" aria-controls="collapseCode">
             <i class="fas fa-fw fa-percent"></i>
-            <span>{{ __('site.Promocodes') }}</span>
+            <span>{{ __('site.promocodes') }}</span>
         </a>
         <div id="collapseCode" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">All Promocodes</a>
-                <a class="collapse-item" href="cards.html">Add New</a>
+                <a class="collapse-item" href="buttons.html">{{ __('site.all promocodes') }}</a>
+                <a class="collapse-item" href="cards.html">{{ __('site.add new') }}</a>
             </div>
         </div>
     </li>
@@ -123,7 +123,7 @@
     <li class="nav-item">
         <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-comments"></i>
-            <span>{{ __('site.Reviews') }}</span></a>
+            <span>{{ __('site.reviews') }}</span></a>
     </li>
 
     <!-- Divider -->
@@ -134,12 +134,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTestimonials"
             aria-expanded="true" aria-controls="collapseTestimonials">
             <i class="fas fa-fw fa-comment-alt"></i>
-            <span>{{ __('site.Testimonials') }}</span>
+            <span>{{ __('site.testimonials') }}</span>
         </a>
         <div id="collapseTestimonials" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">All Testimonials</a>
-                <a class="collapse-item" href="cards.html">Add New</a>
+                <a class="collapse-item" href="buttons.html">{{ __('site.all testimonials') }}</a>
+                <a class="collapse-item" href="cards.html">{{ __('site.add new') }}</a>
             </div>
         </div>
     </li>
@@ -151,7 +151,7 @@
         {{-- <a class="nav-link" href="{{ route('admin.roles.index') }}"> --}}
         <a class="nav-link" href="#">
             <i class="fas fa-fw fa-lock"></i>
-            <span>{{ __('site.Roles') }}</span></a>
+            <span>{{ __('site.roles') }}</span></a>
     </li>
 
 
