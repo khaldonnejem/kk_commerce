@@ -72,4 +72,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->phone;
     }
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class)->withDefault();
+    }
+
 }

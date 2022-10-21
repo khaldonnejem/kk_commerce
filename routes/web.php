@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\APIController;
 use App\Models\Order;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -44,9 +45,13 @@ Route::prefix(LaravelLocalization::setLocale())->group(function () {
         Route::get('products/{id}/forcedelete', [ProductController::class, 'forcedelete'])->name('products.forcedelete');
         Route::resource('products',ProductController::class);
 
+        //Roles
+        Route::resource('roles', RoleController::class);
 
+        //delete image
         Route::get('delete-image/{id}', [ProductController::class, 'delete_image'])->name('products.delete_image');
 
+        // user
         Route::get('users',[UserController::class, 'index'])->name('users.index');
         Route::delete('users/{id}',[UserController::class, 'destroy'])->name('users.destroy');
 

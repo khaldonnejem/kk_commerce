@@ -148,8 +148,8 @@
     <hr class="sidebar-divider mb-0">
 
     <li class="nav-item">
-        {{-- <a class="nav-link" href="{{ route('admin.roles.index') }}"> --}}
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.roles.index') }}">
+        {{-- <a class="nav-link" href="#"> --}}
             <i class="fas fa-fw fa-lock"></i>
             <span>{{ __('site.roles') }}</span></a>
     </li>

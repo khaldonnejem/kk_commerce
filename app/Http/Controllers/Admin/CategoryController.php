@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
@@ -16,6 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        Gate::authorize('all_categories');
         $categories = category::with('parent')->orderByDesc('id')->paginate(5);
 
         // dd($categories);

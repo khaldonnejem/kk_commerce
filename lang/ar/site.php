@@ -13,11 +13,11 @@ return [
     'all products' => 'جميع المنتجات',
 
     'trash' =>  'سلة المهملات',
-    'promocodes' => 'كود خصم',
+    'promocodes' => 'أكواد خصم',
     'all promocodes' => 'جميع أكواد الخصم',
-    'reviews' => 'المراجعات',
-    'testimonials' => 'التوصيات-الشهادات',
-    'all testimonials' => 'جميع التوصيات',
+    'reviews' => 'التقييمات',
+    'testimonials' => 'آراء العملاء',
+    'all testimonials' => 'جميع آراء العملاء',
     'roles' => 'الصلاحيات',
 
 ];

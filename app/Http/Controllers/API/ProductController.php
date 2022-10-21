@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+        Gate::authorize('all_products');
+
         $products = Product::all();
 
         if($products->count() > 0) {

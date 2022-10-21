@@ -20,5 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // User::truncate();
+        // Category::truncate();
+        // Product::truncate();
+
+        // User::factory(10)->create();
+        // Category::factory(50)->create();
+        // Product::factory(100)->create();
+
+        $this->call(RolesDataSeeder::class);
     }
 }
